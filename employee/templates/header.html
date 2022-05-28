@@ -35,7 +35,10 @@
         </li>
         <li class="nav-item">
             <a class="nav-link{% if request.path == '/admin_login' %} active {% endif %}" href="{% url 'admin_login' %}"><i class="fas fa-user"></i> Admin </a>
-          </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.path == '/client_login' %} active {% endif %}" href="{% url 'client_login' %}"><i class="fas fa-user"></i> Customers Management </a>
+        </li>
       </ul>
     </div>
   </nav>

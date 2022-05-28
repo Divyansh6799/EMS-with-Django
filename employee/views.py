@@ -441,3 +441,28 @@ def edit_experience1(request,pid):
     return render(request,'edit_experience1.html',locals())
 
 
+def client_login(request):
+    error = ""
+    if request.method == 'POST':
+        u = request.POST['emailid']
+        p = request.POST['pwd']
+        # user = authenticate(username= u, password= p)
+        try:
+            if((u=="client@gmail.com") and (p=="client")):
+            # if user.is_staff:
+                # login(request, user)
+            
+                error = "no"
+            else:
+                error ="yes"                
+        except:
+            
+            error ="yes"
+        
+    return render(request,'client_login.html',locals())
+
+
+def client_home(request):
+    if not request.user.is_authenticated:
+        return redirect('client_login')
+    return render(request,'client_home.html')
