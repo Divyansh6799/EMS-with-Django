@@ -61,3 +61,24 @@ def __str__(self):
         return self.user.username
     
     
+class CandidateDetails(models.Model):
+        # user = models.ForeignKey(User,on_delete=models.CASCADE)
+        Name = models.CharField(max_length=100, null=True)
+        Email = models.CharField(max_length=200, null = True)
+        Date_of_Birth = models.CharField(max_length=20,null = True)
+        Contact = models.CharField(max_length=30,null = True)
+        
+        address = models.CharField(max_length=100, null=True)
+        city = models.CharField(max_length=100, null = True)
+        State = models.CharField(max_length=20,null = True)
+        country = models.CharField(max_length=30,null = True)
+        
+        School = models.CharField(max_length=100, null=True)
+        Marks10 = models.CharField(max_length=100, null = True)
+        Marks12 = models.CharField(max_length=20,null = True)
+        College = models.CharField(max_length=30,null = True)
+        
+        graduation_score = models.CharField(max_length=100, null=True)
+        Backlogs = models.CharField(max_length=100, null = True)
+        Resume = models.CharField(max_length=20,null = True)
+       

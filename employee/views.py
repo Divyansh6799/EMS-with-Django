@@ -1,3 +1,4 @@
+from turtle import back
 from django.shortcuts import render,redirect
 from.models import *
 from django.contrib.auth import login, logout, authenticate
@@ -36,6 +37,12 @@ def emp_login(request):
             login(request, user)
             
             error = "no"
+
+        elif ((u=="hr@gmail.com") and (p=="hr")):
+            return render(request,'hr_home.html')
+
+            error="hr"
+
         else:
             
             error ="yes"
@@ -441,28 +448,43 @@ def edit_experience1(request,pid):
     return render(request,'edit_experience1.html',locals())
 
 
-def client_login(request):
-    error = ""
-    if request.method == 'POST':
-        u = request.POST['emailid']
-        p = request.POST['pwd']
-        # user = authenticate(username= u, password= p)
-        try:
-            if((u=="client@gmail.com") and (p=="client")):
-            # if user.is_staff:
-                # login(request, user)
-            
-                error = "no"
-            else:
-                error ="yes"                
-        except:
-            
-            error ="yes"
-        
-    return render(request,'client_login.html',locals())
 
+def Aboutus(request):
+    # if not request.user.is_authenticated:
+    #     return redirect('emp_home')
+    return render(request,'Aboutus.html')
 
-def client_home(request):
+def apply_job(request):
+    if request.method == "POST":
+       error= ""
+       name = request.POST['name']
+       email = request.POST['email']
+       dob = request.POST ['dob']
+       contactNo = request.POST['contactNo']
+       Address = request.POST['Address']
+       City = request.POST['City']
+       state = request.POST['state']
+       Country = request.POST['Country']
+       School_Name = request.POST['School_Name']
+       Marks10th = request.POST['Marks10th']
+       Marks12th = request.POST['Marks12th']
+       College_Name = request.POST['College_Name']
+       graduation_marks = request.POST['graduation_marks']
+       backlogs = request.POST['backlogs']
+       resume= request.POST['myfile']
+
+    try:
+        user=User.objects.create_user(Name=name,Email=email,Date_of_Birth=dob,Contact=contactNo,address=Address,
+                    city=City,State=state,country=Country,School=School_Name,Marks10=Marks10th,Marks12=Marks12th,
+                    College=College_Name,graduation_score=graduation_marks,Backlogs=backlogs,Resume=resume)
+        CandidateDetails.objects.create(user=user)
+        error = "no"
+    except:
+        error = "yes"
+              
+    return render(request,'apply_job.html',locals())
+   
+def hr_home(request):
     if not request.user.is_authenticated:
-        return redirect('client_login')
-    return render(request,'client_home.html')
+        return redirect('emp_login')
+    return render(request,'hr_home.html')

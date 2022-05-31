@@ -37,6 +37,7 @@ urlpatterns = [
     path('edit_profile<int:pid>',edit_profile,name='edit_profile'),
     path('edit_education1<int:pid>',edit_education1,name='edit_education1'),
     path('edit_experience1<int:pid>',edit_experience1,name='edit_experience1'),
-    path('client_login',client_login,name='client_login'),
-    path('client_home',client_home,name='client_home'),
+    path('Aboutus',Aboutus,name='Aboutus'),
+    path('apply_job',apply_job,name='apply_job'),
+    path('hr_home',hr_home,name='hr_home'),
 ]

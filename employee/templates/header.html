@@ -37,7 +37,10 @@
             <a class="nav-link{% if request.path == '/admin_login' %} active {% endif %}" href="{% url 'admin_login' %}"><i class="fas fa-user"></i> Admin </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link{% if request.path == '/client_login' %} active {% endif %}" href="{% url 'client_login' %}"><i class="fas fa-user"></i> Customers Management </a>
+          <a class="nav-link{% if request.path == '/apply_job' %} active {% endif %}" href="{% url 'apply_job' %}"><i class="fa fa-graduation-cap"></i> Career </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.path == '/Aboutus' %} active {% endif %}" href="{% url 'Aboutus' %}"><i class="fas fa-address-book"></i> About Us</a>
         </li>
       </ul>
     </div>
