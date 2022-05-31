@@ -39,7 +39,7 @@ def emp_login(request):
             error = "no"
 
         elif ((u=="hr@gmail.com") and (p=="hr")):
-            return render(request,'hr_home.html')
+            return render(request,'hr_home.html',locals())
 
             error="hr"
 
