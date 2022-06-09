@@ -472,19 +472,19 @@ def apply_job(request):
        graduation_marks = request.POST['graduation_marks']
        backlogs = request.POST['backlogs']
        resume= request.POST['myfile']
-
+       
     try:
         user=User.objects.create_user(Name=name,Email=email,Date_of_Birth=dob,Contact=contactNo,address=Address,
                     city=City,State=state,country=Country,School=School_Name,Marks10=Marks10th,Marks12=Marks12th,
                     College=College_Name,graduation_score=graduation_marks,Backlogs=backlogs,Resume=resume)
-        CandidateDetails.objects.create(user=user)
+        # CandidateDetails.objects.create(user=user)
         error = "no"
     except:
         error = "yes"
-              
+        print("exception")
     return render(request,'apply_job.html',locals())
    
 def hr_home(request):
-    if not request.user.is_authenticated:
-        return redirect('emp_login')
+    # if not request.user.is_authenticated:
+    #     return redirect('emp_login')
     return render(request,'hr_home.html')
